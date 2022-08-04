@@ -1,0 +1,45 @@
+Project Build Debug Test Analyze Tools Extensions Window Help _ |Search (CtsitQ) PD keyboardEMU
+
+5 ~~ (Release = 368 © > Local Windows Debugger D G~ BBs he
+
+atlwinver
+
+xoqioo,
+
+TB C.\Users\Tad Keller\source\repos\keyboardEMU\x64\Release\keyboardEMU.exe - o xy TE)
+5diPlusScreenCapture(HWND
+7¢=
+
+n |
+4
+
+94 ing a handle to the process's default heap.
+
+StretchBLt(hdcoestshwindowCompatibleDC, xoest:@, ydest:0, soestiwidth, noest:sheight, ndesrezhwindomDC, xsre:screenx, ysreiscreeny, sSreiwidth, jsrezheight, epxSRCCOPY); —//ct
+GetDIBits(hde:hwindowCompatibleDC, hba:hbwindow, start:0, clinessheight, tpvsits: Lpbitmap, tpbmii(BITHAPINFO*)&bi, usage/DIB_RGB_COLORS);
+
+// avoid memory Leak
+DeLeteDC( fe: huindowCompatibleDC) ;
+ReleaseDCChiind, focehwindowDC) ;
+
+return hbwind
+
+av 4 > in82 chs
+
+Show output from: Build .
+
+1> @ functions were new in current compilation
+1> @ functions had inline decision re-evaluated but remain unchanged
+I>Finished generating code
+‘I>keyboardEMU. vexproj -> C:\Users\Tad Keller\source\repos \keyboardEMU\x64\Release\keyboardEMU. exe
+ApDone building project “keyboardEMU. vexproj".
+
+Build: 1 succeeded, @ failed, @ up-to-date, @ skipped
+
+4
+Error List Output
+
+TZ Bute succeeded
+
+Em CORON @
+
