@@ -160,7 +160,7 @@ void emulateKey(INPUT& ip, int keyCode)
 }
 void emulateWord(INPUT& ip, int str[])
 {
-    for (int i = 0; i != sizeof(str); i++)
+    for (int i = 0; i != sizeof(str) - 1; i++)
     {
         emulateKey(ip, str[i]);
     }
@@ -169,7 +169,6 @@ void afk(INPUT& ip)
 {
     while (!(GetKeyState(VK_F2) & 0x8000))
     {
-
         holdKey(ip, 'A');
         Sleep(1000);
         releaseKey(ip);
@@ -201,27 +200,28 @@ int main()
 
     while (true)
     {
+        
         if (GetKeyState(VK_F1) & 0x8000)
         {
             afk(ip);
         }
-
+        
         //if not pressing button allow it to be toggled again
         if (!(GetKeyState(VK_MBUTTON) & 0x8000))
         {
             healFlag = false;
         }
-        if (GetKeyState(VK_MBUTTON) & 0x8000 && !tpaFlag/*Check if high-order bit is set (1 << 15)*/)
+        if (GetKeyState(VK_MBUTTON) & 0x8000 && !healFlag/*Check if high-order bit is set (1 << 15)*/)
         {
             healFlag = true;
 
             emulateKey(ip, 'L');
-            Sleep(50);
+            Sleep(60);
 
-            int input[] = { VK_OEM_2, 'H', 'E', 'A', 'L' };
+            static int input[] = { VK_OEM_2, 'H', 'E', 'A', 'L' };
             emulateWord(ip, input);
 
-            Sleep(100);
+            Sleep(150);
 
             emulateKey(ip, VK_RETURN);
         }
@@ -236,12 +236,12 @@ int main()
             tpaFlag = true;
 
             emulateKey(ip, 'L');
-            Sleep(50);
+            Sleep(60);
 
             int input[] = {VK_OEM_2, 'T', 'P', 'A', VK_SPACE, 'A'};
             emulateWord(ip, input);
 
-            Sleep(75);
+            Sleep(150);
           
             emulateKey(ip, VK_RETURN);
 
