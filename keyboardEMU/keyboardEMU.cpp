@@ -194,7 +194,54 @@ void afk(INPUT& ip)
         releaseKey(ip);
     }
 }
-void sellAllKits(INPUT& ip)
+void dropUneeded(INPUT& ip, HDC& dc)
+{
+    COLORREF color = NULL;
+    int _red;
+    int _green;
+    int _blue;
+    for (int i = 0; i < 1000; i += 25)
+    {
+        for (int j = 0; j < 1080; j += 25)
+        {
+            color = GetPixel(dc, i, j);
+            _red = GetRValue(color);
+            _green = GetGValue(color);
+            _blue = GetBValue(color);
+            SetCursorPos(i, j);
+            std::cout << _red << std::endl;
+            if (_red == 56 && _green == 112 && _blue == 57)
+            {
+                Sleep(1000);
+
+                holdKey(ip, VK_CONTROL);
+                mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+                releaseKey(ip);
+                Sleep(1000);
+            }
+            if (_red == 97 && _green == 114 && _blue == 65)
+            {
+                Sleep(1000);
+
+                holdKey(ip, VK_CONTROL);
+                mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+                releaseKey(ip);
+                Sleep(1000);
+            }
+            if (_red == 58 && _green == 115 && _blue == 59)
+            {
+                Sleep(1000);
+
+                holdKey(ip, VK_CONTROL);
+                mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+                releaseKey(ip);
+                Sleep(1000);
+            }
+        }
+    }
+
+}
+void sellAllKits(INPUT& ip, HDC& dc)
 {
     std::cout << "selling" << std::endl;
 
@@ -246,6 +293,8 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+
+    dropUneeded(ip, dc);
 
     //Kit MVP
     emulateKey(ip, 'L');
@@ -319,6 +368,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
 
     //Kit PRO
@@ -381,6 +431,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
 
     //Kit SNIPER
@@ -455,6 +506,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
     //Kit SKILLED
     emulateKey(ip, 'L');
@@ -505,6 +557,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
 
     //Kit MILITARY
@@ -567,6 +620,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
     //Kit BEGINNER
     emulateKey(ip, 'L');
@@ -628,6 +682,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
     //Kit RUSSIAN
     emulateKey(ip, 'L');
@@ -701,6 +756,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
     //Kit ROOKIE
     emulateKey(ip, 'L');
@@ -763,6 +819,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
     //Kit EXPERT
     emulateKey(ip, 'L');
@@ -836,6 +893,7 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
 
     //Kit GODLIKE
     emulateKey(ip, 'L');
@@ -909,7 +967,8 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
-    
+    dropUneeded(ip, dc);
+
     //Kit MVP+
     emulateKey(ip, 'L');
     Sleep(100);
@@ -982,23 +1041,44 @@ void sellAllKits(INPUT& ip)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+    dropUneeded(ip, dc);
+
+}
+void test()
+{
+    const int minWheelMovement = 120;
+    for (int i = 0; i != 50; i++)
+    {
+        mouse_event(MOUSEEVENTF_WHEEL, 0, 0, minWheelMovement, 0);
+        Sleep(25);
+    }
+    
+  
+   // Sleep(1000);
+}
+void getColor(HDC& dc)
+{
+    POINT point;
+    GetCursorPos(&point);
+
+    COLORREF color = GetPixel(dc, point.x, point.y);
+    int _red = GetRValue(color);
+    int _green = GetGValue(color);
+    int _blue = GetBValue(color);
+    std::cout << _red << " " << _green << " " << _blue << " " << std::endl;
+
+    return;
 }
 
-void test(INPUT& ip)
-{
-    Sleep(150);
-    holdKey(ip, VK_SHIFT);
-    holdKey(ip, VK_OEM_PLUS);
-    Sleep(100);
-    releaseKey(ip);
-    releaseKey(ip);
-    emulateKey(ip, VK_SHIFT);
-}
 int main()
 {
+    HDC dc = GetDC(NULL);
+    
+   
     // This structure will be used to create the keyboard
    // input event.
     INPUT ip;
+    INPUT KB;
 
     // Set up a generic keyboard event.
     ip.type = INPUT_KEYBOARD;
@@ -1017,11 +1097,12 @@ int main()
         }
         if(GetKeyState(VK_END) & 0x8000)
         {
-            sellAllKits(ip);
+            sellAllKits(ip, dc);
         }
-        if (GetKeyState(VK_INSERT) & 0x8000)
+        if (GetKeyState(VK_BACK) & 0x8000)
         {
-          //  test(ip);
+            test();
+           // getColor(dc);
         }
         
         //if not pressing button allow it to be toggled again
@@ -1066,7 +1147,7 @@ int main()
         }
         Sleep(1);
     }
-
+    ReleaseDC(NULL, dc);
     // Exit normally
     return 0;
 }
