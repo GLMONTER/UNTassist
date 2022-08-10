@@ -4,7 +4,7 @@
 #include <iostream>
 //#define WINVER 0x0500
 #include <windows.h>
-
+#include<vector>
 /*
 #include "Gdiplus.h"
 #include<vector>
@@ -158,12 +158,23 @@ void emulateKey(INPUT& ip, int keyCode)
     ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release
     SendInput(1, &ip, sizeof(INPUT));
 }
-void emulateWord(INPUT& ip, int str[])
+void emulateWord(INPUT& ip, std::vector<int> input)
 {
-    for (int i = 0; i != sizeof(str) - 1; i++)
+    for (int i = 0; i != input.size(); i++)
     {
-        emulateKey(ip, str[i]);
+        emulateKey(ip, input[i]);
     }
+    //Sleep(150);
+}
+void emulateCapKey(INPUT& ip, const int keyCode)
+{
+    Sleep(150);
+    holdKey(ip, VK_SHIFT);
+    holdKey(ip, keyCode);
+    Sleep(100);
+    releaseKey(ip);
+    releaseKey(ip);
+    emulateKey(ip, VK_SHIFT);
 }
 void afk(INPUT& ip)
 {
@@ -183,6 +194,806 @@ void afk(INPUT& ip)
         releaseKey(ip);
     }
 }
+void sellAllKits(INPUT& ip)
+{
+    std::cout << "selling" << std::endl;
+
+    //Kit Starter
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    std::vector<int> input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'S', 'T', 'A', 'R', 'T', 'E', 'R' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit Starter
+    //Heartbreaker
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = {VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '0', '3', '7'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Dressings
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '4', ' ', '6'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Kit MVP
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'M', 'V', 'P' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit MVP
+    //M4A1
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'L', 'V', 'O', 'A' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MDR
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'D', 'R'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '4' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+
+    //Kit PRO
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'P', 'R', 'O' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit Pro
+   //MCX
+    emulateKey(ip, 'L');
+    Sleep(100);
+    
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '4' ,'2', '3'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MP5K
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '6', '7', '6'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '4' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+
+    //Kit SNIPER
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'S', 'N', 'I', 'P', 'E', 'R'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit SNIPER
+   //SHOTGUN
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '3' ,'3', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //SNIPER
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '0', '8', '7' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Kit SKILLED
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'S', 'K', 'I', 'L', 'L', 'E', 'D'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit SKILLED
+   //NIGHRAIDER
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '3', '7' ,'7'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '2' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+
+    //Kit MILITARY
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'M', 'I', 'L', 'I', 'T', 'A', 'R', 'Y'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit MILITARY
+   //MPX
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '4' ,'4', '1'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Kit BEGINNER
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'B', 'E', 'G', 'I', 'N', 'N', 'E', 'R'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit BEGINNER
+   //GRIZZLY
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '9', '7'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //PDW
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '1', '6'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Kit RUSSIAN
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'R', 'U', 'S', 'S', 'I', 'A', 'N'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit RUSSIAN
+   //ZUBEK
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '2', '2' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //SCALAR
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '4', '4', '7'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Kit ROOKIE
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'R', 'O', 'O', 'K', 'I', 'E'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit ROOKIE
+   //AKM
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '2', '4', '2'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Kit EXPERT
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'E', 'X', 'P', 'E', 'R', 'T' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit EXPERT
+   //MIDWEST
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '1', '3', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //PDW
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '1', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Kit GODLIKE
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'G', 'O', 'D', 'L', 'I', 'K', 'E'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit GODLIKE
+   //BARRET
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '5', '8', '2', '2', '2' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MP5K
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '6', '7', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+    
+    //Kit MVP+
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'M', 'V', 'P'};
+    emulateWord(ip, input);
+    emulateCapKey(ip, VK_OEM_PLUS);
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //Selling Kit MVP+
+   //AK74N
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '3', '6', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BIZON
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '5', '8', '2', '0', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+}
+
+void test(INPUT& ip)
+{
+    Sleep(150);
+    holdKey(ip, VK_SHIFT);
+    holdKey(ip, VK_OEM_PLUS);
+    Sleep(100);
+    releaseKey(ip);
+    releaseKey(ip);
+    emulateKey(ip, VK_SHIFT);
+}
 int main()
 {
     // This structure will be used to create the keyboard
@@ -197,13 +1008,20 @@ int main()
 
     bool tpaFlag = false;
     bool healFlag = false;
-
+    bool toggled = false;
     while (true)
-    {
-        
+    {   
         if (GetKeyState(VK_F1) & 0x8000)
         {
             afk(ip);
+        }
+        if(GetKeyState(VK_END) & 0x8000)
+        {
+            sellAllKits(ip);
+        }
+        if (GetKeyState(VK_INSERT) & 0x8000)
+        {
+          //  test(ip);
         }
         
         //if not pressing button allow it to be toggled again
@@ -218,7 +1036,7 @@ int main()
             emulateKey(ip, 'L');
             Sleep(60);
 
-            static int input[] = { VK_OEM_2, 'H', 'E', 'A', 'L' };
+            std::vector<int> input = { VK_OEM_2, 'H', 'E', 'A', 'L' };
             emulateWord(ip, input);
 
             Sleep(150);
@@ -238,7 +1056,7 @@ int main()
             emulateKey(ip, 'L');
             Sleep(60);
 
-            int input[] = {VK_OEM_2, 'T', 'P', 'A', VK_SPACE, 'A'};
+            std::vector<int> input = {VK_OEM_2, 'T', 'P', 'A', VK_SPACE, 'A'};
             emulateWord(ip, input);
 
             Sleep(150);
