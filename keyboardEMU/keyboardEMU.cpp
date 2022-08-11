@@ -1,6 +1,6 @@
 // keyboardEMU.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#define monter
 #include <iostream>
 //#define WINVER 0x0500
 #include <windows.h>
@@ -299,6 +299,17 @@ void initBlacklist()
 
     blacklist.push_back(col{ 66,62, 61, "RPK MAG" });
     blacklist.push_back(col{ 67,64, 61, "RPK MAG" });
+    blacklist.push_back(col{ 66,63, 61, "RPK MAG" });
+    blacklist.push_back(col{ 64,63, 60, "RPK MAG" });
+    blacklist.push_back(col{ 65,63, 60, "RPK MAG" });
+    blacklist.push_back(col{ 64,63, 61, "RPK MAG" });
+    blacklist.push_back(col{ 65,63, 61, "RPK MAG" });
+    blacklist.push_back(col{ 70,67, 65, "RPK MAG" });
+    blacklist.push_back(col{ 67,65, 63, "RPK MAG" });
+    blacklist.push_back(col{ 66,63, 60, "RPK MAG" });
+    blacklist.push_back(col{ 58,60, 58, "RPK MAG" });
+
+
 
     blacklist.push_back(col{ 52,52, 52, "NiGHT VISION" });
     blacklist.push_back(col{ 0,255, 0, "NiGHT VISION" });
@@ -317,11 +328,23 @@ void dropItems(INPUT& ip, HDC& dc)
 
     //start at 23% screen width and end at 54 percent, size of inventory on screen
     //move by 1 percent of screen
-    for (int i = screenx * 0.23; i < screenx * 0.54; i += screenx * 0.01)
+#ifdef calvin
+    float Start = 0.165;
+    float End = 0.41;
+    float Down = 0.001;
+#endif
+   
+#ifdef monter
+    float Start = 0.23;
+    float End = 0.54;
+    float Down = 0.0015;
+#endif
+
+    for (int i = screenx * Start; i < screenx * End; i += screenx * 0.01)
     {
         if ((GetKeyState(VK_F2) & 0x8000))
             return;
-        for (int j = 0; j < 1080; j += screenx * 0.0015)
+        for (int j = 0; j < screeny; j += screenx * Down)
         {
             if ((GetKeyState(VK_F2) & 0x8000))
                 return;
@@ -1416,8 +1439,10 @@ void afk(INPUT& ip, HDC& dc)
             timer--;
             system("cls");
             std::cout << "Minutes until another kit sell : " << timer / 60 << std::endl;
+            std::cout << "To cancel afk and kit sell, hold F2 until the terminal is cleared" << std::endl;
         }
     }
+    system("cls");
     /*
     while (!(GetKeyState(VK_F2) & 0x8000))
     {
@@ -1458,6 +1483,13 @@ void getColor(HDC& dc)
 
 int main()
 {
+    std::cout << "Press F1 to afk while selling kits" << std::endl;
+    std::cout << "HOLD F2 if you are afking until the program stops doing things" << std::endl;
+
+    std::cout << "Press Middle Mouse Wheel to do /heal" << std::endl;
+    std::cout << "Press the Comma key to /tpa a" << std::endl;
+
+
     initBlacklist();
     HDC dc = GetDC(NULL);
     
