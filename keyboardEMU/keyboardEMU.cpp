@@ -1,6 +1,6 @@
 // keyboardEMU.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-#define monter
+#define calvin
 #include <iostream>
 //#define WINVER 0x0500
 #include <windows.h>
@@ -229,6 +229,11 @@ void initBlacklist()
     blacklist.push_back(col{ 119,119, 119, "Military Mag2" });
     blacklist.push_back(col{ 121,119, 121, "Military Mag2" });
     blacklist.push_back(col{ 126,129, 126, "Military Mag2" });
+    blacklist.push_back(col{ 113,116, 113, "Military Mag2" });
+    blacklist.push_back(col{ 115,115, 115, "Military Mag2" });
+    blacklist.push_back(col{ 117,118, 117, "Military Mag2" });
+    blacklist.push_back(col{ 126,125, 126, "Military Mag2" });
+    blacklist.push_back(col{ 117,116, 117, "Military Mag2" });
 
 
 
@@ -242,6 +247,13 @@ void initBlacklist()
     blacklist.push_back(col{ 160,44, 24, "Shotgun Ammo" });
     */
     blacklist.push_back(col{ 70,72, 70, "Surefire Mag" });
+    blacklist.push_back(col{ 70,75, 70, "Surefire Mag" });
+    blacklist.push_back(col{ 73,74, 73, "Surefire Mag" });
+    blacklist.push_back(col{ 71,75, 71, "Surefire Mag" });
+    blacklist.push_back(col{ 70,74, 70, "Surefire Mag" });
+
+
+
     blacklist.push_back(col{ 50,51, 50, "HK Mag" });
     blacklist.push_back(col{ 51,53, 51, "HK Mag" });
     blacklist.push_back(col{ 51,54, 51, "HK Mag" });
@@ -329,7 +341,7 @@ void dropItems(INPUT& ip, HDC& dc)
     //start at 23% screen width and end at 54 percent, size of inventory on screen
     //move by 1 percent of screen
 #ifdef calvin
-    float Start = 0.165;
+    float Start = 0.173;
     float End = 0.41;
     float Down = 0.001;
 #endif
@@ -392,11 +404,20 @@ void dropUneeded(INPUT& ip, HDC& dc)
     dropItems(ip, dc);
 
     SetCursorPos(800, 800);
+#ifdef calvin
+    for (int i = 0; i != 13; i++)
+    {
+        mouse_event(MOUSEEVENTF_WHEEL, 0, 0, -minWheelMovement, 0);
+        Sleep(25);
+    }
+#endif
+#ifdef monter
     for (int i = 0; i != 20; i++)
     {
         mouse_event(MOUSEEVENTF_WHEEL, 0, 0, -minWheelMovement, 0);
         Sleep(25);
     }
+#endif
     dropItems(ip, dc);
 
     //leave inventory
@@ -1418,7 +1439,98 @@ void sellAllKits(INPUT& ip, HDC& dc)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+
+    //Kit ASSAULT
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'A', 'S', 'S', 'A', 'U', 'L', 'T'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+    if ((GetKeyState(VK_F2) & 0x8000))
+        return;
+    //Selling Kit ASSAULT
+    //M249
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '6', '2', '2' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+    /*
+    //Kit MEGA
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'M', 'E', 'G', 'A'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+    if ((GetKeyState(VK_F2) & 0x8000))
+        return;
+    //Selling Kit MEGA
+    //M249
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '5', '9', '9' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+    */
+    //last drop
     dropUneeded(ip, dc);
+
 
     //wait
     Sleep(150);
