@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/tad/Documents/untassist/linuxVER/cmake-build-debug",
-		"source" : "/home/tad/Documents/untassist/linuxVER"
+		"build" : "/var/home/tad/Documents/untassist/linuxVER/cmake-build-debug",
+		"source" : "/var/home/tad/Documents/untassist/linuxVER"
 	},
 	"version" : 
 	{
