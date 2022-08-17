@@ -21,11 +21,7 @@ int main()
     unsigned int qMask;
 // Press the keyCode key
 
-    static unsigned int keycodeConverted;
-    keycodeConverted = XKeysymToKeycode(display, XK_space);
-   // XTestFakeKeyEvent(display, keycodeConverted, True, CurrentTime);
-   // XTestFakeKeyEvent(display, keycodeConverted, False, CurrentTime);if(keys_return[identity] != '\0')
-    XFlush(display);
+
 
     char keys_return[32];
     XQueryKeymap(display, keys_return);
@@ -39,10 +35,16 @@ int main()
     }
 
 
-    usleep(1000 / 0.01);
-    XQueryPointer(display, rootWin, &qRoot, &qChild, &qRootX, &qRootY, &qChildX, &qChildY, &qMask);
-    std::cout<<qMask<<std::endl;
 
+    usleep(1000 / 0.01);
+    //XQueryPointer(display, rootWin, &qRoot, &qChild, &qRootX, &qRootY, &qChildX, &qChildY, &qMask);
+    //std::cout<<qMask<<std::endl;
+
+    static unsigned int keycodeConverted;
+   // keycodeConverted = XKeysymToKeycode(display, XK_Control_L);
+   // XTestFakeKeyEvent(display, keycodeConverted, True, CurrentTime);
+  //  XTestFakeKeyEvent(display, keycodeConverted, False, CurrentTime);
+    XFlush(display);
 
     usleep(5000);
     return 0;
