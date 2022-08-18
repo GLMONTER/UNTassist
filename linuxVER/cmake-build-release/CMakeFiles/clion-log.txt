@@ -1,0 +1,4 @@
+/snap/clion/204/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" -S /home/tad/Documents/untassist/linuxVER -B /home/tad/Documents/untassist/linuxVER/cmake-build-release
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/tad/Documents/untassist/linuxVER/cmake-build-release

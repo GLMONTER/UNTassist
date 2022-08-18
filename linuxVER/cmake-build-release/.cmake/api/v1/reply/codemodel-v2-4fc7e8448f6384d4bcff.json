@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.23"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "Release",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "linuxVER::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-linuxVER-Debug-e2e9db77f1aeef00ca96.json",
+					"jsonFile" : "target-linuxVER-Release-a3eff4c15ede39ab48d2.json",
 					"name" : "linuxVER",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/var/home/tad/Documents/untassist/linuxVER/cmake-build-debug",
-		"source" : "/var/home/tad/Documents/untassist/linuxVER"
+		"build" : "/home/tad/Documents/untassist/linuxVER/cmake-build-release",
+		"source" : "/home/tad/Documents/untassist/linuxVER"
 	},
 	"version" : 
 	{

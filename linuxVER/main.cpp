@@ -54,7 +54,7 @@ void emulateWord(Display *display, std::vector<int> input)
 }
 void emulateCapKey(Display *display, const unsigned int keyCode)
 {
-    Sleep(200);
+    Sleep(300);
     holdKey(display, XK_Shift_L);
     holdKey(display, keyCode);
     Sleep(100);
@@ -198,6 +198,9 @@ void initBlacklist()
     blacklist.push_back(col{ 70,70, 70, "Bizon MAG" });
     blacklist.push_back(col{ 58,58, 58, "Bizon MAG" });
     blacklist.push_back(col{ 61,61, 61, "Bizon MAG" });
+
+    blacklist.push_back(col{ 59,63, 28, "M249 MAG" });
+
 }
 
 void scroll(Display* display, const bool up_down)
@@ -366,10 +369,10 @@ void sellAllKits(Display* display)
     std::vector<int> input = { '/', 'K', 'I', 'T', ' ', 'S', 'T', 'A', 'R', 'T', 'E', 'R' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if (isKeyPressed(display, 8))
         return;
     //Selling Kit Starter
@@ -380,10 +383,10 @@ void sellAllKits(Display* display)
     input = {'/', 'S', 'E', 'L', 'L', ' ', '1', '0', '3', '7'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Dressings
     emulateKey(display, 'L');
@@ -392,10 +395,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '4', ' ', '6'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -404,10 +407,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
 
     //Kit NEWBIE
@@ -417,10 +420,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'N', 'E', 'W', 'B', 'I', 'E'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit NEWBIE
@@ -431,10 +434,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '6', '3'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //SCALAR
     emulateKey(display, 'L');
@@ -443,10 +446,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '1', '4', '4', '7' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -455,10 +458,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -467,10 +470,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -479,10 +482,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit MVP
     emulateKey(display, 'L');
@@ -491,10 +494,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'M', 'V', 'P' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit MVP
@@ -505,10 +508,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'L', 'V', 'O', 'A' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MDR
     emulateKey(display, 'L');
@@ -517,10 +520,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'D', 'R'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -529,10 +532,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -541,10 +544,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -553,10 +556,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '4' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit PRO
     emulateKey(display, 'L');
@@ -565,10 +568,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'P', 'R', 'O' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit Pro
@@ -579,10 +582,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '4' ,'2', '3'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MP5K
     emulateKey(display, 'L');
@@ -591,10 +594,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '6', '7', '6'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -603,10 +606,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '4' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -615,10 +618,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
 
     //Kit SNIPER
@@ -628,10 +631,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'S', 'N', 'I', 'P', 'E', 'R'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit SNIPER
@@ -642,10 +645,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '3' ,'3', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //SNIPER
     emulateKey(display, 'L');
@@ -654,10 +657,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '0', '8', '7' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -666,10 +669,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -678,10 +681,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -690,10 +693,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit SKILLED
     emulateKey(display, 'L');
@@ -702,10 +705,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'S', 'K', 'I', 'L', 'L', 'E', 'D'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit SKILLED
@@ -716,10 +719,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '1', '3', '7' ,'7'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
 
     //BLOODBAG
@@ -729,10 +732,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -741,10 +744,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '2' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     dropUneeded(display);
 
 
@@ -755,10 +758,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'M', 'I', 'L', 'I', 'T', 'A', 'R', 'Y'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit MILITARY
@@ -769,10 +772,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '4' ,'4', '1'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -781,10 +784,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -793,10 +796,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -805,10 +808,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit BEGINNER
     emulateKey(display, 'L');
@@ -817,10 +820,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'B', 'E', 'G', 'I', 'N', 'N', 'E', 'R'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit BEGINNER
@@ -831,10 +834,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '9', '7'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //PDW
     emulateKey(display, 'L');
@@ -843,10 +846,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '1', '1', '6'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -855,10 +858,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -867,10 +870,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     //dropUneeded(ip, dc);
 
     //Kit RUSSIAN
@@ -880,10 +883,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'R', 'U', 'S', 'S', 'I', 'A', 'N'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit RUSSIAN
@@ -894,10 +897,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '1', '2', '2' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //SCALAR
     emulateKey(display, 'L');
@@ -906,10 +909,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '1', '4', '4', '7'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -918,10 +921,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -930,10 +933,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -942,10 +945,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit ROOKIE
     emulateKey(display, 'L');
@@ -954,10 +957,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'R', 'O', 'O', 'K', 'I', 'E'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit ROOKIE
@@ -968,10 +971,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '2', '4', '2'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
 
     //BLOODBAG
@@ -981,10 +984,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -993,10 +996,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -1005,10 +1008,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     //dropUneeded(ip, dc);
 
     //Kit EXPERT
@@ -1018,10 +1021,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'E', 'X', 'P', 'E', 'R', 'T' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit EXPERT
@@ -1032,10 +1035,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '5', '7', '9' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //PDW
     emulateKey(display, 'L');
@@ -1044,10 +1047,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '1', '1', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -1056,10 +1059,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -1068,10 +1071,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -1080,10 +1083,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit GODLIKE
     emulateKey(display, 'L');
@@ -1092,10 +1095,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'G', 'O', 'D', 'L', 'I', 'K', 'E'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit GODLIKE
@@ -1106,10 +1109,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '5', '8', '2', '2', '2' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MP5K
     emulateKey(display, 'L');
@@ -1118,10 +1121,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '6', '7', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -1130,10 +1133,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -1142,10 +1145,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -1154,10 +1157,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     //dropUneeded(ip, dc);
 
     //Kit MVP+
@@ -1167,10 +1170,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'M', 'V', 'P'};
     emulateWord(display, input);
     emulateCapKey(display, '+');
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit MVP+
@@ -1181,10 +1184,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '3', '6', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BIZON
     emulateKey(display, 'L');
@@ -1193,10 +1196,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '5', '8', '2', '0', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -1205,10 +1208,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -1217,10 +1220,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -1229,10 +1232,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit MASTER
     emulateKey(display, 'L');
@@ -1240,10 +1243,10 @@ void sellAllKits(Display* display)
 
     input = { '/', 'K', 'I', 'T', ' ', 'M', 'A', 'S', 'T', 'E', 'R'};
     emulateWord(display, input);
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit MASTER
@@ -1254,10 +1257,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '0', '5', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //SHOTGUN
     emulateKey(display, 'L');
@@ -1266,10 +1269,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '3' ,'3', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -1278,10 +1281,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -1290,10 +1293,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -1302,10 +1305,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //dropUneeded(ip, dc);
 
@@ -1316,10 +1319,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'L', 'E', 'G', 'E', 'N', 'D' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit LEGEND
@@ -1330,10 +1333,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '5', '7', '9' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BIZON
     emulateKey(display, 'L');
@@ -1342,10 +1345,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '5', '8', '2', '0', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -1354,10 +1357,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //MRE
     emulateKey(display, 'L');
@@ -1366,10 +1369,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '3' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //Kit ASSAULT
     emulateKey(display, 'L');
@@ -1378,10 +1381,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'A', 'S', 'S', 'A', 'U', 'L', 'T'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit ASSAULT
@@ -1392,10 +1395,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '6', '2', '2' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -1404,10 +1407,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '5' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     /*
     //Kit MEGA
     emulateKey(display, 'L');
@@ -1416,10 +1419,10 @@ void sellAllKits(Display* display)
     input = { '/', 'K', 'I', 'T', ' ', 'M', 'E', 'G', 'A'};
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     if ((isKeyPressed(display, 8)))
         return;
     //Selling Kit MEGA
@@ -1430,10 +1433,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '3', '5', '9', '9' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //ALICE
     emulateKey(display, 'L');
@@ -1442,10 +1445,10 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
 
     //BLOODBAG
     emulateKey(display, 'L');
@@ -1454,27 +1457,27 @@ void sellAllKits(Display* display)
     input = { '/', 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '6' };
     emulateWord(display, input);
 
-    Sleep(200);
+    Sleep(300);
 
     emulateKey(display, XK_Return);
-    Sleep(200);
+    Sleep(300);
     */
     //last drop
     dropUneeded(display);
 
 
     //wait
-    Sleep(200);
+    Sleep(300);
 }
 void afk(Display* display)
 {
     while (!isKeyPressed(display, 8))
     {
         sellAllKits(display);
-        //45 minute timer
-        int timer = 2700;
+        //55 minute timer, higher because pixel scanning is faster on linux
+        int timer = 3300;
 
-        for (int i = 0; i != 2700; i++)
+        for (int i = 0; i != 3300; i++)
         {
             if (isKeyPressed(display, 8))
                 break;
@@ -1494,7 +1497,7 @@ void test()
     // Sleep(1000);
 }
 
-void getColor(Display* display)
+void getColor(Display* display, bool testing = false)
 {
     static XColor color;
     static XImage *image;
@@ -1505,8 +1508,8 @@ void getColor(Display* display)
     color.pixel = XGetPixel(image, x -5 , y -5);
     XQueryColor (display, XDefaultColormap(display, XDefaultScreen (display)), &color);
     XDestroyImage(image);
-
-   // std::cout<<color.red / 256<<" " <<color.green / 256<<" " <<color.blue / 256<<std::endl;
+    if(testing)
+        std::cout<<color.red / 256<<" " <<color.green / 256<<" " <<color.blue / 256<<std::endl;
     //std::cout<<x<< " "<<y<<std::endl;
     //Sleep(1000);
 }
@@ -1535,7 +1538,7 @@ int main()
 
         if (isKeyPressed(display, 2))
         {
-            getColor(display);
+            getColor(display, true);
         }
         //512 is the middle mouse button
         //if not pressing button allow it to be toggled again
@@ -1553,7 +1556,7 @@ int main()
             std::vector<int> input = { '/', 'H', 'E', 'A', 'L' };
             emulateWord(display, input);
 
-            Sleep(200);
+            Sleep(300);
 
             emulateKey(display, XK_Return);
         }
@@ -1573,7 +1576,7 @@ int main()
             std::vector<int> input = {'/', 'T', 'P', 'A', XK_space, 'A'};
             emulateWord(display, input);
 
-            Sleep(200);
+            Sleep(300);
 
             emulateKey(display, XK_Return);
 
