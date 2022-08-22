@@ -1,10 +1,7 @@
-// keyboardEMU.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-#define calvin
+#define monter
 #include <iostream>
-//#define WINVER 0x0500
 #include <windows.h>
-#include<vector>
+#include <vector>
 
 void holdKey(INPUT& ip, int keyCode)
 {
@@ -36,7 +33,6 @@ void emulateWord(INPUT& ip, std::vector<int> input)
     {
         emulateKey(ip, input[i]);
     }
-    //Sleep(150);
 }
 void emulateCapKey(INPUT& ip, const int keyCode)
 {
@@ -58,6 +54,7 @@ struct col
     std::string desc;
 };
 std::vector<col> blacklist;
+
 //check if a color is in the blacklist
 bool inBlackList(const col& structure)
 {
@@ -68,6 +65,7 @@ bool inBlackList(const col& structure)
     }
     return false;
 }
+
 //make the color blacklist for inventory items
 void initBlacklist()
 {
@@ -94,8 +92,6 @@ void initBlacklist()
     blacklist.push_back(col{ 48,102, 48, "Green Daypack" });
     blacklist.push_back(col{ 49,107, 49, "Green Daypack" });
 
-
-
     blacklist.push_back(col{ 122,122, 122, "Military Mag" });
     blacklist.push_back(col{ 123,122, 123, "Military Mag2" });
     blacklist.push_back(col{ 119,119, 119, "Military Mag2" });
@@ -106,25 +102,23 @@ void initBlacklist()
     blacklist.push_back(col{ 117,118, 117, "Military Mag2" });
     blacklist.push_back(col{ 126,125, 126, "Military Mag2" });
     blacklist.push_back(col{ 117,116, 117, "Military Mag2" });
-
-
-
+    blacklist.push_back(col{ 121,121, 121, "Military Mag2" });
+    blacklist.push_back(col{ 126,126, 126, "Military Mag2" });
+    blacklist.push_back(col{ 124,124, 124, "Military Mag2" });
+    blacklist.push_back(col{ 127,128, 127, "Military Mag2" });
+    blacklist.push_back(col{ 117,117, 117, "Military Mag2" });
 
     blacklist.push_back(col{ 121,121, 121, "Military Drum" });
     blacklist.push_back(col{ 145,145, 145, "Locker" });
-    /*
-    blacklist.push_back(col{ 161,37, 22, "Shotgun Ammo" });
-    blacklist.push_back(col{ 149,43, 26, "Shotgun Ammo2" });
-    blacklist.push_back(col{ 169,41, 18, "Shotgun Ammo2" });
-    blacklist.push_back(col{ 160,44, 24, "Shotgun Ammo" });
-    */
+  
     blacklist.push_back(col{ 70,72, 70, "Surefire Mag" });
     blacklist.push_back(col{ 70,75, 70, "Surefire Mag" });
     blacklist.push_back(col{ 73,74, 73, "Surefire Mag" });
     blacklist.push_back(col{ 71,75, 71, "Surefire Mag" });
     blacklist.push_back(col{ 70,74, 70, "Surefire Mag" });
-
-
+    blacklist.push_back(col{ 71,72, 71, "Surefire Mag" });
+    blacklist.push_back(col{ 73,75, 73, "Surefire Mag" });
+    blacklist.push_back(col{ 72,74, 72, "Surefire Mag" });
 
     blacklist.push_back(col{ 50,51, 50, "HK Mag" });
     blacklist.push_back(col{ 51,53, 51, "HK Mag" });
@@ -132,13 +126,10 @@ void initBlacklist()
     blacklist.push_back(col{ 52,54, 52, "HK Mag" });
     blacklist.push_back(col{ 52,53, 52, "HK Mag" });
 
-
-
     blacklist.push_back(col{ 79,81, 79, "Grizzly Mag" });
     blacklist.push_back(col{ 50,50, 50, "Scalar Mag" });
     blacklist.push_back(col{ 52,52, 52, "Scalar Mag" });
     blacklist.push_back(col{ 53,53, 53, "Scalar Mag" });
-
 
     blacklist.push_back(col{ 96,96, 96, "Ranger Drum" });
     blacklist.push_back(col{ 46,46, 46, "SV 98 Mag" });
@@ -154,8 +145,6 @@ void initBlacklist()
     blacklist.push_back(col{ 91,96, 91, "Ranger Mag2" });
     blacklist.push_back(col{ 83,85, 83, "Ranger Mag2" });
     blacklist.push_back(col{ 84,82, 84, "Ranger Mag2" });
-
-
 
     blacklist.push_back(col{ 58,62, 58, "MPX Mag" });
     blacklist.push_back(col{ 59,61, 59, "MPX Mag" });
@@ -178,9 +167,6 @@ void initBlacklist()
     blacklist.push_back(col{ 74,76, 75, "AKMS MAG" });
     blacklist.push_back(col{ 73,75, 73, "AKMS MAG" });
 
-
-
-
     blacklist.push_back(col{ 66,62, 61, "RPK MAG" });
     blacklist.push_back(col{ 67,64, 61, "RPK MAG" });
     blacklist.push_back(col{ 66,63, 61, "RPK MAG" });
@@ -193,8 +179,6 @@ void initBlacklist()
     blacklist.push_back(col{ 66,63, 60, "RPK MAG" });
     blacklist.push_back(col{ 58,60, 58, "RPK MAG" });
 
-
-
     blacklist.push_back(col{ 52,52, 52, "NiGHT VISION" });
     blacklist.push_back(col{ 0,255, 0, "NiGHT VISION" });
 
@@ -203,8 +187,30 @@ void initBlacklist()
     blacklist.push_back(col{ 61,61, 61, "Bizon MAG" });
     
     blacklist.push_back(col{ 59,63, 28, "M249 MAG" });
-
 }
+
+#ifdef calvin
+//where scanning starts (x-axis)
+float Start = 0.185f;
+//where scanning ends (x-axis)
+float End = 0.41f;
+//percentage of screen y-axis to scan
+float Down = 0.001f;
+//the last scroll distance to prevent dropping clothing items
+int lastScrollDist = 0;
+#endif
+
+#ifdef monter
+//where scanning starts (x-axis)
+float Start = 0.26f;
+//where scanning ends (x-axis)
+float End = 0.54f;
+//percentage of screen y-axis to scan
+float Down = 0.0015f;
+//the last scroll distance to prevent dropping clothing items
+int lastScrollDist = 20;
+#endif
+
 void dropItems(INPUT& ip, HDC& dc)
 {
     //Check pixels for the correct color
@@ -213,33 +219,22 @@ void dropItems(INPUT& ip, HDC& dc)
     int screenx = GetSystemMetrics(SM_CXSCREEN);
     int screeny = GetSystemMetrics(SM_CYSCREEN);
 
-    //start at 23% screen width and end at 54 percent, size of inventory on screen
-    //move by 1 percent of screen
-#ifdef calvin
-    float Start = 0.173;
-    float End = 0.41;
-    float Down = 0.001;
-#endif
-   
-#ifdef monter
-    float Start = 0.23;
-    float End = 0.54;
-    float Down = 0.0015;
-#endif
-
     for (int i = screenx * Start; i < screenx * End; i += screenx * 0.01)
     {
         if ((GetKeyState(VK_F2) & 0x8000))
             return;
+
         for (int j = 0; j < screeny; j += screenx * Down)
         {
             if ((GetKeyState(VK_F2) & 0x8000))
                 return;
+
             color = GetPixel(dc, i, j);
 
+            //move the mouse to where we are scanning, just off of the position to prevent getting the mouse color
             SetCursorPos(i+5, j+5);
             col structure{ GetRValue(color), GetGValue(color), GetBValue(color), "empty" };
-           // std::cout << structure.red << " " << structure.green << " " << structure.blue << std::endl;
+
             if (inBlackList(structure))
             {
                 Sleep(250);
@@ -268,8 +263,8 @@ void dropUneeded(INPUT& ip, HDC& dc)
     }
 
     dropItems(ip, dc);
-    //so we can scroll
 
+    //so we can scroll
     SetCursorPos(800, 800);
     for (int i = 0; i != 20; i++)
     {
@@ -278,21 +273,15 @@ void dropUneeded(INPUT& ip, HDC& dc)
     }
     dropItems(ip, dc);
 
+    //so we can scroll
     SetCursorPos(800, 800);
-#ifdef calvin
-    for (int i = 0; i != 13; i++)
+
+    for (int i = 0; i != lastScrollDist; i++)
     {
         mouse_event(MOUSEEVENTF_WHEEL, 0, 0, -minWheelMovement, 0);
         Sleep(25);
     }
-#endif
-#ifdef monter
-    for (int i = 0; i != 20; i++)
-    {
-        mouse_event(MOUSEEVENTF_WHEEL, 0, 0, -minWheelMovement, 0);
-        Sleep(25);
-    }
-#endif
+
     dropItems(ip, dc);
 
     //leave inventory
@@ -314,6 +303,7 @@ void sellAllKits(INPUT& ip, HDC& dc)
     Sleep(150);
     if ((GetKeyState(VK_F2) & 0x8000))
         return;
+
     //Selling Kit Starter
     //Heartbreaker
     emulateKey(ip, 'L');
@@ -1315,6 +1305,7 @@ void sellAllKits(INPUT& ip, HDC& dc)
     emulateKey(ip, VK_RETURN);
     Sleep(150);
 
+#ifdef monter
     //Kit ASSAULT
     emulateKey(ip, 'L');
     Sleep(100);
@@ -1352,6 +1343,94 @@ void sellAllKits(INPUT& ip, HDC& dc)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+#endif
+#ifdef calvin
+    //Kit CAL
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'C', 'A', 'L'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+    if ((GetKeyState(VK_F2) & 0x8000))
+        return;
+    //Selling Kit CAL
+    //RPK LONG
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '0', '5', '6' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //RPK SHORT
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '0', '5', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '4' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '4' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //SQUID
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '4', '3', '4', ' ', '2'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+#endif
     /*
     //Kit MEGA
     emulateKey(ip, 'L');
@@ -1467,6 +1546,7 @@ void getColor(HDC& dc)
 
     return;
 }
+#include <tchar.h>
 
 int main()
 {
@@ -1497,6 +1577,30 @@ int main()
     bool toggled = false;
     while (true)
     {   
+        /*
+        LPSTR wnd_title;
+        HWND hwnd = GetForegroundWindow(); // get handle of currently active window
+        GetWindowTextA(hwnd, wnd_title, 256);
+
+        DWORD dwPID;
+        GetWindowThreadProcessId(hwnd, &dwPID);
+
+        HANDLE Handle = OpenProcess(
+            PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
+            FALSE,
+            dwPID
+        );
+        if (Handle)
+        {
+            TCHAR Buffer[MAX_PATH];
+            if (GetModuleFileNameEx(Handle, 0, Buffer, MAX_PATH))
+            {
+                _tprintf(_T("Path: %s"), Buffer);
+                // At this point, buffer contains the full path to the executable
+            }
+            CloseHandle(Handle);
+        }
+        */
         if (GetKeyState(VK_F1) & 0x8000)
         {
             afk(ip, dc);
