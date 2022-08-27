@@ -208,7 +208,7 @@ float End = 0.54f;
 //percentage of screen y-axis to scan
 float Down = 0.0015f;
 //the last scroll distance to prevent dropping clothing items
-int lastScrollDist = 20;
+int lastScrollDist = 12;
 #endif
 
 void dropItems(INPUT& ip, HDC& dc)
@@ -1343,6 +1343,92 @@ void sellAllKits(INPUT& ip, HDC& dc)
 
     emulateKey(ip, VK_RETURN);
     Sleep(150);
+
+    //Kit MONTER
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'K', 'I', 'T', ' ', 'M', 'O', 'N', 'T', 'E', 'R'};
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+    if ((GetKeyState(VK_F2) & 0x8000))
+        return;
+    //Selling Kit MONTER
+    //BARRET
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '5', '8', '2', '2', '2' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //RPK SHORT
+    emulateKey(ip, 'L');
+    Sleep(100);
+
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '3', '0', '5', '5' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //BLOODBAG
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '3', '9', '5', ' ', '4' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //MRE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', 'M', 'R', 'E', ' ', '4' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //ALICE
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '2', '5', '3', ' ', '1' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
+
+    //SQUID
+    emulateKey(ip, 'L');
+    Sleep(100);
+    input.clear();
+    input = { VK_OEM_2, 'S', 'E', 'L', 'L', ' ', '1', '4', '3', '4', ' ', '2' };
+    emulateWord(ip, input);
+
+    Sleep(150);
+
+    emulateKey(ip, VK_RETURN);
+    Sleep(150);
 #endif
 #ifdef calvin
     //Kit CAL
@@ -1527,12 +1613,7 @@ void afk(INPUT& ip, HDC& dc)
     }
     */
 }
-void test()
-{
-   
-  
-   // Sleep(1000);
-}
+
 void getColor(HDC& dc)
 {
     POINT point;
@@ -1543,11 +1624,33 @@ void getColor(HDC& dc)
     int _green = GetGValue(color);
     int _blue = GetBValue(color);
     std::cout << _red << " " << _green << " " << _blue << " " << std::endl;
+    std::cout << point.x << " " << point.y << std::endl;
 
     return;
 }
-#include <tchar.h>
+void SPAWN_DIE(INPUT& ip)
+{
+    system("cls");
+    std::cout << "bedding :)" << std::endl;
+  
+    while (true)
+    {
+        if (GetKeyState(VK_F2) & 0x8000)
+            break;
+        emulateKey(ip, 'L');
+        Sleep(100);
 
+        std::vector<int> input = { VK_OEM_2, 'H', 'O', 'M', 'E' };
+        emulateWord(ip, input);
+
+        Sleep(150);
+
+        emulateKey(ip, VK_RETURN);
+        Sleep(20000);
+    }
+    system("cls");
+
+}
 int main()
 {
     std::cout << "Press F1 to afk while selling kits" << std::endl;
@@ -1555,7 +1658,7 @@ int main()
 
     std::cout << "Press Middle Mouse Wheel to do /heal" << std::endl;
     std::cout << "Press the Comma key to /tpa a" << std::endl;
-
+    std::cout << "Press the period button to repair vehicle" << std::endl;
 
     initBlacklist();
     HDC dc = GetDC(NULL);
@@ -1577,38 +1680,31 @@ int main()
     bool toggled = false;
     while (true)
     {   
-        /*
-        LPSTR wnd_title;
-        HWND hwnd = GetForegroundWindow(); // get handle of currently active window
-        GetWindowTextA(hwnd, wnd_title, 256);
-
-        DWORD dwPID;
-        GetWindowThreadProcessId(hwnd, &dwPID);
-
-        HANDLE Handle = OpenProcess(
-            PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
-            FALSE,
-            dwPID
-        );
-        if (Handle)
-        {
-            TCHAR Buffer[MAX_PATH];
-            if (GetModuleFileNameEx(Handle, 0, Buffer, MAX_PATH))
-            {
-                _tprintf(_T("Path: %s"), Buffer);
-                // At this point, buffer contains the full path to the executable
-            }
-            CloseHandle(Handle);
-        }
-        */
         if (GetKeyState(VK_F1) & 0x8000)
         {
             afk(ip, dc);
+        }
+        if (GetKeyState(VK_END) & 0x8000)
+        {
+            SPAWN_DIE(ip);
         }
 
         if (GetKeyState(VK_BACK) & 0x8000)
         {
             getColor(dc);
+        }
+        if (GetKeyState(VK_OEM_PERIOD) & 0x8000)
+        {
+            emulateKey(ip, 'L');
+            Sleep(100);
+            std::vector<int> input;
+            input = { VK_OEM_2, 'R', 'E', 'P', 'A', 'I', 'R', 'V', 'E', 'H', 'I', 'C', 'L', 'E'};
+            emulateWord(ip, input);
+
+            Sleep(150);
+
+            emulateKey(ip, VK_RETURN);
+            Sleep(150);
         }
         
         //if not pressing button allow it to be toggled again
