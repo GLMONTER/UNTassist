@@ -1635,18 +1635,20 @@ void SPAWN_DIE(INPUT& ip)
   
     while (true)
     {
-        if (GetKeyState(VK_F2) & 0x8000)
-            break;
-        emulateKey(ip, 'L');
-        Sleep(100);
+        for (int i = 0; i != 10; i++)
+        {
+            Sleep(4000);
 
-        std::vector<int> input = { VK_OEM_2, 'H', 'O', 'M', 'E' };
-        emulateWord(ip, input);
-
-        Sleep(150);
-
-        emulateKey(ip, VK_RETURN);
-        Sleep(20000);
+            if (GetKeyState(VK_F2) & 0x8000)
+                break;
+            Sleep(250);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            Sleep(750);
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+            Sleep(250);
+            Sleep(37000);
+        }
+        emulateKey(ip, 'R');
     }
     system("cls");
 

@@ -2,10 +2,10 @@
 C:\Users\Tad Keller\Documents\untassist\keyboardEMU\keyboardEMU.cpp(222,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\Tad Keller\Documents\untassist\keyboardEMU\keyboardEMU.cpp(222,67): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
 C:\Users\Tad Keller\Documents\untassist\keyboardEMU\keyboardEMU.cpp(227,51): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Tad Keller\Documents\untassist\keyboardEMU\keyboardEMU.cpp(1670,11): warning C4101: 'KB': unreferenced local variable
+C:\Users\Tad Keller\Documents\untassist\keyboardEMU\keyboardEMU.cpp(1672,11): warning C4101: 'KB': unreferenced local variable
   Generating code
-  3 of 220 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
+  0 of 220 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   keyboardEMU.vcxproj -> C:\Users\Tad Keller\Documents\untassist\x64\Release\keyboardEMU.exe
